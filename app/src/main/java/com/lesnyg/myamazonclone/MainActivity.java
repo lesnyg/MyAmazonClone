@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //첫화면
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container,new ItemListFragment())
+                .commit();
     }
 
     @Override
@@ -67,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_account) {
             return true;
         }
 
@@ -81,9 +86,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container,new ItemListFragment())
+                    .commit();
         } else if (id == R.id.nav_gallery) {
-
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container,new ItemDetailFragment())
+                    .commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

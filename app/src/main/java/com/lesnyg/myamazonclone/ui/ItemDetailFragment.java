@@ -1,7 +1,5 @@
-package com.lesnyg.myamazonclone;
+package com.lesnyg.myamazonclone.ui;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lesnyg.myamazonclone.R;
 
 
 public class ItemDetailFragment extends Fragment {

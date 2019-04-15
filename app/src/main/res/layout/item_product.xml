@@ -23,7 +23,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:photoUrl="@{product.photoUrls.get(0)}"
+            app:photoUrl="@{product.photoUrl.get(0)}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView

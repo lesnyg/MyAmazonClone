@@ -4,20 +4,20 @@ import java.util.List;
 import java.util.Map;
 
 public class Product {
-    private List<String> photoUrls;
+    private List<String> photoUrl;
     private String title;
     private int price;
-    private Map<Integer,Integer> stars;
+    private Map<String,Integer> stars;
     private List<String> options;
     private String detail;
     private String maker;
 
-    public List<String> getPhotoUrls() {
-        return photoUrls;
+    public List<String> getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setPhotoUrls(List<String> photoUrls) {
-        this.photoUrls = photoUrls;
+    public void setPhotoUrl(List<String> photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public String getTitle() {
@@ -36,11 +36,11 @@ public class Product {
         this.price = price;
     }
 
-    public Map<Integer, Integer> getStars() {
+    public Map<String, Integer> getStars() {
         return stars;
     }
 
-    public void setStars(Map<Integer, Integer> stars) {
+    public void setStars(Map<String, Integer> stars) {
         this.stars = stars;
     }
 
@@ -71,7 +71,7 @@ public class Product {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Product{");
-        sb.append("photoUrls=").append(photoUrls);
+        sb.append("photoUrl=").append(photoUrl);
         sb.append(", title='").append(title).append('\'');
         sb.append(", price=").append(price);
         sb.append(", stars=").append(stars);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,12 +44,7 @@ public class ItemListFragment extends Fragment {
         ProductAdapter adapter = new ProductAdapter(product -> {
             //Detail 화면으로 전환
             model.selectedProduct = product;
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container,new ItemDetailFragment())
-                    .addToBackStack(null)
-                    .commit();
-
+            Navigation.findNavController(view).navigate(R.id.action_itemListFragment_to_itemDetailFragment);
         });
         recyclerView.setAdapter(adapter);
 

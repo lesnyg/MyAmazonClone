@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //첫화면
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container,new ItemListFragment())
-                .commit();
+
     }
 
     @Override

@@ -1,7 +1,13 @@
 package com.lesnyg.myamazonclone.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lesnyg.myamazonclone.R;
+import com.lesnyg.myamazonclone.viewmodels.MainViewModel;
 
 
 public class ItemDetailFragment extends Fragment {
@@ -20,6 +27,7 @@ public class ItemDetailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private static final String TAG = ItemDetailFragment.class.getSimpleName();
 
 
     public ItemDetailFragment() {
@@ -51,6 +59,14 @@ public class ItemDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_item_detail, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        MainViewModel model = ViewModelProviders.of(requireActivity()).get(MainViewModel.class);
+
+        Log.d(TAG,"onViewCreated: "+model.selectedProduct);
     }
 
     @Override

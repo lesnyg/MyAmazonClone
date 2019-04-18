@@ -1,14 +1,14 @@
 package com.lesnyg.myamazonclone.ui;
 
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +38,21 @@ public class ItemListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        MainViewModel model = ViewModelProviders.of(requireActivity()).get(MainViewModel.class);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         ProductAdapter adapter = new ProductAdapter(product -> {
             //TODO : Detail 화면으로 전환
+            model.selectedProduct = product;
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container,new ItemDetailFragment())
+                    .addToBackStack(null)
+                    .commit();
+
         });
         recyclerView.setAdapter(adapter);
 
-        //가짜데이터
-        MainViewModel model = ViewModelProviders.of(this).get(MainViewModel.class);
+
         model.products.observe(this, new Observer<List<Product>>() {
             @Override
             public void onChanged(@Nullable List<Product> products) {
@@ -82,7 +89,9 @@ public class ItemListFragment extends Fragment {
         public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             View view = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.item_product, viewGroup, false);
-            return new ProductViewHolder(view);
+            ProductViewHolder viewHolder = new ProductViewHolder(view);
+            view.setOnClickListener(v -> mListener.onProductItemClick(mItems.get(viewHolder.getAdapterPosition())));
+            return viewHolder;
         }
 
         @Override

@@ -1,8 +1,8 @@
 package com.lesnyg.myamazonclone.viewmodels;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -11,14 +11,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.lesnyg.myamazonclone.models.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewModel extends ViewModel {
     public MutableLiveData<List<Product>> products = new MutableLiveData<>();
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-
+    public  Product selectedProduct;
 
     public void fetch() {
         FirebaseFirestore.getInstance().collection("item")

@@ -41,7 +41,7 @@ public class ItemListFragment extends Fragment {
         MainViewModel model = ViewModelProviders.of(requireActivity()).get(MainViewModel.class);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         ProductAdapter adapter = new ProductAdapter(product -> {
-            //TODO : Detail 화면으로 전환
+            //Detail 화면으로 전환
             model.selectedProduct = product;
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
